@@ -1,7 +1,13 @@
 # FastAPI Ratelimiter
 
-- This is a custom Package version:
-- for original implementation visit: [fastapi_ratelimiter](https://github.com/GLEF1X/fastapi-ratelimiter)
+- This is a custom package version, for anyone who want to clone it as module and using it in their project
+- To use this version, just do an git clone, and use this fastapi_ratelimiter module
+- This version is on par with redis recent version 
+- For original implementation as a package visit: [fastapi_ratelimiter](https://github.com/GLEF1X/fastapi-ratelimiter)
+
+
+# New Features: 
+- Yet to be announced. Stay tuned!
 
 ## Quick start:
 
