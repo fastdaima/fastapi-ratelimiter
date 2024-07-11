@@ -1,31 +1,29 @@
 # FastAPI Ratelimiter
 
-[![PyPI version](https://img.shields.io/pypi/v/fastapi-ratelimiter.svg)]
-
-**Documentation**: https://fastapi-ratelimit.readthedocs.io/en/latest/
+- This is a custom Package version:
+- for original implementation visit: [fastapi_ratelimiter](https://github.com/GLEF1X/fastapi-ratelimiter)
 
 ## Quick start:
 
 ```python
+from redis.asyncio import Redis
 
-import asyncio
-
-import aioredis
 import uvicorn
 from fastapi import FastAPI, Depends
 from starlette.responses import JSONResponse
+import asyncio
 
-from fastapi_ratelimiter import RateLimited, RedisDependencyMarker
+from fastapi_ratelimiter.depends import RateLimited, RedisDependencyMarker
 from fastapi_ratelimiter.strategies import BucketingRateLimitStrategy
 
 app = FastAPI()
-redis = aioredis.from_url("redis://localhost")
+redis = Redis.from_url("redis://localhost:6379")
 
 
 @app.get(
     "/some_expensive_call", response_class=JSONResponse,
     dependencies=[
-        Depends(RateLimited(BucketingRateLimitStrategy(rate="10/60s")))
+        Depends(RateLimited(BucketingRateLimitStrategy(rate="1/60s")))
     ]
 )
 async def handle_test_endpoint():
