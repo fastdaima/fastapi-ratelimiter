@@ -2,17 +2,16 @@ import inspect
 from http import HTTPStatus
 from typing import Callable, Optional, Union, Awaitable, Sequence
 
-from aioredis import Redis
+from redis.asyncio import Redis
 from fastapi import Depends, HTTPException
 from starlette.requests import Request
 
-from fastapi_ratelimiter.strategies import AbstractRateLimitStrategy
-from fastapi_ratelimiter.types import RateLimitConfig, RateLimitStatus
+from .strategies import AbstractRateLimitStrategy
+from .types import RateLimitConfig, RateLimitStatus
 
 
 class RedisDependencyMarker:
-    pass
-
+    pass 
 
 class RateLimited:
 

@@ -5,11 +5,12 @@ import time
 import zlib
 from typing import Sequence, Union, Callable, Optional, Awaitable
 
-from aioredis.client import Pipeline, Redis
+from redis.asyncio import Redis
+
 from starlette.requests import Request
 
-from fastapi_ratelimiter.types import RateLimitConfig, RateLimitStatus
-from fastapi_ratelimiter.utils import extract_ip_from_request
+from .types import RateLimitConfig, RateLimitStatus
+from .utils import extract_ip_from_request
 
 DEFAULT_PREFIX = "rl:"
 
