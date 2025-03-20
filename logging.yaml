@@ -1,0 +1,57 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+    custom:
+        format: "%(asctime)s,%(msecs)d %(levelname)-8s [%(pathname)s:%(lineno)d in function %(funcName)s] %(message)s"
+        
+        #"%(asctime)s,%(msecs)03d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s" 
+    basic:
+        format: "%(asctime)s - %(name)s - %(lineno)d - %(levelname)s - %(message)s"
+    simple:
+        format: '%(asctime)s - %(name)s - %(levelname)s - %(client_addr)s - "%(request_line)s" %(status_code)s'
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: custom
+        stream: ext://sys.stdout
+    info_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: custom
+        filename: app.log
+        maxBytes: 10485760000 # 10MB
+        backupCount: 20
+        encoding: utf8
+    error_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: ERROR
+        formatter: custom
+        filename: app.log
+        maxBytes: 10485760000 # 10MB
+        backupCount: 20
+        encoding: utf8
+    debug_file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: custom
+        filename: app.log
+        maxBytes: 10485760000 # 10MB
+        backupCount: 20
+        encoding: utf8
+
+
+loggers:
+    uvicorn:
+        level: INFO
+        handlers: [console, info_file_handler, error_file_handler, debug_file_handler]
+        propagate: no
+    gunicorn:
+        level: INFO
+        handlers: [console]
+        propagate: no
+
+root:
+    level: INFO
+    handlers: [console]

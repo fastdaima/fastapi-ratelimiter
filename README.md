@@ -7,7 +7,16 @@
 
 
 # New Features: 
-- Yet to be announced. Stay tuned!
+- Refactoring existing code. 
+- Profiling the fastapi_limiter module
+- Identify performance improvements. 
+- Supporting other storage / db packages in addition to redis, eg: mongodb , keydb, valkey, memcachedb ...etc
+
+
+# why am I doing this
+- To learn in depth about rate limiter 
+- To learn fastapi design internals
+
 
 ## Quick start:
 

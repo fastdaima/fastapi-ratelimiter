@@ -37,6 +37,8 @@ class RateLimited:
         self._response_on_limit_exceeded = response_on_limit_exceeded
         self._http_methods = methods
 
+        
+
     async def __call__(
             self,
             request: Request,
@@ -49,6 +51,8 @@ class RateLimited:
                     ratelimit_config=RateLimitConfig(max_count=0, period_in_seconds=0),
                     time_left=0
                 )
+            
+        
 
         request.state.redis = redis
 
